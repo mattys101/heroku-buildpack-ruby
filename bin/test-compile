@@ -29,7 +29,9 @@ EOM
 fi
 
 if [ -f "$1/.build.profile" ]; then
-    source "$1/.build.profile"
+    pushd "$1"
+    source .build.profile
+    popd
 fi
 
 $heroku_buildpack_ruby_dir/bin/ruby $BIN_DIR/support/ruby_test-compile $@
